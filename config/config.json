@@ -1,0 +1,35 @@
+{
+  "project_name": "daily_data_collector",
+
+  "source": {
+    "type": "api",
+    "url": "https://jsonplaceholder.typicode.com/users",
+    "method": "GET",
+    "timeout_seconds": 10
+  },
+
+  "extraction": {
+    "fields": [
+      "id",
+      "name",
+      "email"
+    ],
+    "required_field": ["id"]
+  },
+
+  "paths": {
+    "raw_data": "data/raw.csv",
+    "clean_data": "data/output.csv",
+    "log_file": "logs/app.log"
+  },
+
+  "cleaning": {
+    "remove_empty_rows": true,
+    "remove_duplicates": true
+  },
+
+  "schedule": {
+      "type": "minutely",
+      "frequency": 1
+  }
+}
